@@ -1,0 +1,75 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: black;
+  background-color: #fefefe;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin: 0.5rem;
+}
+
+#options-form {
+  display: flex;
+}
+
+#options-form fieldset {
+  flex-grow: 1;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  justify-items: flex-start;
+  grid-template-columns: auto auto;
+  gap: 0.25rem;
+}
+
+#options-form fieldset > * {
+  cursor: pointer;
+}
+
+.dark-mode {
+  color: fefefe;
+  background-color: black;
+}
+
+#color-grid {
+  display: grid;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 16 rem;
+  margin: auto;
+  padding: 0.5rem;
+  grid-template-columns: repeat(auto-fit, 5rem);
+  grid-auto-rows: 5rem;
+}
+
+#color-grid > * {
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  padding: 0;
+  margin: 0;
+}
+
+.color-button {
+  cursor: pointer;
+}
+
+.events-disabled {
+  pointer-events: none;
+}
+
+.wrong {
+  opacity: 0.3 !important;
+}
+
+#result-section {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.hide {
+  display: none;
+}
