@@ -14,6 +14,7 @@ const formatOptions = document.getElementById("format-options")
 const rgb = document.getElementById("rgb")
 const hex = document.getElementById("hex")
 const hsl = document.getElementById("hsl")
+const difficultyOptions = document.getElementById("difficulty-options")
 const medium = document.getElementById("medium")
 const hard = document.getElementById("hard")
 const displayOptions = document.getElementById("display-options")
@@ -26,6 +27,10 @@ const nextColorButton = document.getElementById("next-color")
 
 formatOptions.addEventListener("click", e => {
   displayColorToGuess(colorString.innerText)
+})
+
+difficultyOptions.addEventListener("click", e => {
+  if (e.target.name === "difficulty") start()
 })
 
 displayOptions.addEventListener("click", e => {
