@@ -1,5 +1,6 @@
 import {
   generateRandomColors,
+  adjustDifficulty,
   compareColors,
   chooseColor,
   toHSL,
@@ -13,7 +14,8 @@ const formatOptions = document.getElementById("format-options")
 const rgb = document.getElementById("rgb")
 const hex = document.getElementById("hex")
 const hsl = document.getElementById("hsl")
-const difficultyOptions = document.getElementById("difficulty-options")
+const medium = document.getElementById("medium")
+const hard = document.getElementById("hard")
 const displayOptions = document.getElementById("display-options")
 const colorString = document.getElementById("color-string")
 const colorGrid = document.getElementById("color-grid")
@@ -37,7 +39,13 @@ displayOptions.addEventListener("click", e => {
 function start() {
   colorGrid.innerHTML = ""
   resultSection.classList.add("hide")
-  const colors = generateRandomColors(6)
+  let colors = generateRandomColors(6)
+  if (medium.checked) {
+    colors = adjustDifficulty(colors, { difficulty: "medium" })
+  }
+  if (hard.checked) {
+    colors = adjustDifficulty(colors, { difficulty: "hard" })
+  }
   displayColors(colors)
   const correctColor = chooseColor(colors)
   displayColorToGuess(correctColor)

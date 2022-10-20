@@ -8,7 +8,4 @@ The game is simple and straightforward. A color value will be displayed along wi
 
 - Choose between dark or light mode
 - Display color values in RGB, hexadecimal, or HSL
-
-### Coming Soon
-
-- Change the difficulty level (The difficulty setting is shown but the functionality is not yet implemented)
+- Change the difficulty level

@@ -8,6 +8,49 @@ export function chooseColor(colors) {
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
+export function adjustDifficulty(colors, { difficulty = "medium" } = {}) {
+  const selectedColorChannel = ["r", "g", "b"][Math.floor(Math.random() * 3)]
+  return difficulty === "hard"
+    ? setToHard(colors, selectedColorChannel)
+    : setToMedium(colors, selectedColorChannel)
+}
+
+function setToMedium(colors, selectedColorChannel) {
+  const newColorArray = []
+  const initialColor = colors[0]
+  colors.forEach(color => {
+    if (selectedColorChannel === "r") {
+      newColorArray.push(`#${initialColor.slice(1, 3)}${color.slice(3)}`)
+    } else if (selectedColorChannel === "g") {
+      newColorArray.push(
+        `#${color.slice(1, 3)}${initialColor.slice(3, 5)}${color.slice(5)}`
+      )
+    } else if (selectedColorChannel === "b") {
+      newColorArray.push(`#${color.slice(1, 5)}${initialColor.slice(5)}`)
+    }
+  })
+  return newColorArray
+}
+
+function setToHard(colors, selectedColorChannel) {
+  const newColorArray = []
+  const initialColor = colors[0]
+  colors.forEach(color => {
+    if (selectedColorChannel === "r") {
+      newColorArray.push(`#${color.slice(1, 3)}${initialColor.slice(3)}`)
+    } else if (selectedColorChannel === "g") {
+      newColorArray.push(
+        `#${initialColor.slice(1, 3)}${color.slice(3, 5)}${initialColor.slice(
+          5
+        )}`
+      )
+    } else if (selectedColorChannel === "b") {
+      newColorArray.push(`#${initialColor.slice(1, 5)}${color.slice(5)}`)
+    }
+  })
+  return newColorArray
+}
+
 export function generateRandomColors(number) {
   if (number < 1) return []
   return generateRandomColors(number - 1).concat(generateRandomHexColorString())
