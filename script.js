@@ -79,7 +79,6 @@ function showCorrectAnswer() {
     if (!compareColors(button.style.backgroundColor, colorString.innerText)) {
       button.classList.add("wrong")
     }
-    console.log(button.classList)
   })
 }
 
