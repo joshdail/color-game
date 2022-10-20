@@ -1,5 +1,7 @@
 import convert from "color-convert"
 
+const NUM_POSSIBLE_HEX_VALUES = 16777216
+
 export function compareColors(color1, color2) {
   return toHex(color1) === toHex(color2)
 }
@@ -75,7 +77,7 @@ export function toHSL(color) {
 }
 
 function generateRandomHexColorString() {
-  const randomHex = Math.floor(Math.random() * 16777215)
+  const randomHex = Math.floor(Math.random() * NUM_POSSIBLE_HEX_VALUES)
     .toString(16)
     .toUpperCase()
   return randomHex.length === 6
