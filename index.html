@@ -4,56 +4,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
-  <body class="dark-mode">
-    <header>
-      <h1>Color Game</h1>
+  <body class="light-mode">
+    <header class="header">
+      <nav class="nav">
+        <h1 class="title">Color Game</h1>
+        <div class="animation-area"></div>
+      </nav>
     </header>
-    <section id="options-menu">
-      <form id="options-form">
-        <fieldset id="format-options">
-          <legend>Format</legend>
-          <input type="radio" name="format" id="rgb" value="rgb" />
-          <label for="rgb">RGB</label>
-          <input type="radio" name="format" id="hex" value="hex" checked />
-          <label for="hex">Hex</label>
-          <input type="radio" name="format" id="hsl" value="hsl" />
-          <label for="hsl">HSL</label>
-        </fieldset>
-        <fieldset id="difficulty-options">
-          <legend>Difficulty</legend>
-          <input
-            type="radio"
-            name="difficulty"
-            id="easy"
-            value="easy"
-            checked
-          />
-          <label for="easy">Easy</label>
-          <input type="radio" name="difficulty" id="medium" value="medium" />
-          <label for="medium">Medium</label>
-          <input type="radio" name="difficulty" id="hard" value="hard" />
-          <label for="hard">Hard</label>
-        </fieldset>
-        <fieldset id="display-options">
-          <legend>Display</legend>
-          <input type="radio" name="display" id="light" value="light" />
-          <label for="light">Light</label>
-          <input type="radio" name="display" id="dark" value="dark" checked />
-          <label for="dark">Dark</label>
-        </fieldset>
-      </form>
-    </section>
-    <h2 id="color-string">#000000</h2>
-    <section id="color-grid"></section>
-    <section id="result-section" class="hide">
-      <p><span id="result">Correct</span></p>
-      <button id="next-color">Next Color</button>
+    <section class="game-container">
+      <main class="game-display">
+        <h2 class="color-to-guess" id="color-string">#000000</h2>
+        <section class="color-grid" id="color-grid"></section>
+        <section id="result-section" class="hide">
+          <h3 class="result" id="result">Correct</h3>
+          <button class="btn-next-color" id="next-color">Next Color</button>
+        </section>
+      </main>
+      <aside class="options-menu" id="options-menu">
+        <h3 class="options-menu-title">Options</h3>
+        <form id="options-form">
+          <fieldset class="options-set" id="format-options">
+            <legend>Format</legend>
+            <input type="radio" name="format" id="rgb" value="rgb" />
+            <label for="rgb">RGB</label>
+            <input type="radio" name="format" id="hex" value="hex" checked />
+            <label for="hex">Hex</label>
+            <input type="radio" name="format" id="hsl" value="hsl" />
+            <label for="hsl">HSL</label>
+          </fieldset>
+          <fieldset class="options-set" id="difficulty-options">
+            <legend>Difficulty</legend>
+            <input
+              type="radio"
+              name="difficulty"
+              id="easy"
+              value="easy"
+              checked
+            />
+            <label for="easy">Easy</label>
+            <input type="radio" name="difficulty" id="medium" value="medium" />
+            <label for="medium">Medium</label>
+            <input type="radio" name="difficulty" id="hard" value="hard" />
+            <label for="hard">Hard</label>
+          </fieldset>
+          <fieldset class="options-set" id="display-options">
+            <legend>Display</legend>
+            <input
+              type="radio"
+              name="display"
+              id="light"
+              value="light"
+              checked
+            />
+            <label for="light">Light</label>
+            <input type="radio" name="display" id="dark" value="dark" />
+            <label for="dark">Dark</label>
+          </fieldset>
+        </form>
+      </aside>
     </section>
     <template id="color-button-template">
-      <div><div class="color-button"></div></div>
+        <button class="btn-color"></buttn>
     </template>
   </body>
 </html>

@@ -36,8 +36,10 @@ difficultyOptions.addEventListener("click", e => {
 displayOptions.addEventListener("click", e => {
   if (e.target.value === "dark") {
     body.classList.add("dark-mode")
+    body.classList.remove("light-mode")
   } else if (e.target.value === "light") {
     body.classList.remove("dark-mode")
+    body.classList.add("light-mode")
   }
 })
 
@@ -88,10 +90,10 @@ function checkColorGuess(e) {
 function showCorrectAnswer() {
   const colorButtons = Array.from(colorGrid.childNodes)
   colorButtons.forEach(button => {
-    button.classList.add("events-disabled")
     if (!compareColors(button.style.backgroundColor, colorString.innerText)) {
       button.classList.add("wrong")
     }
+    button.disabled = true
   })
 }
 

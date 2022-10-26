@@ -1,75 +1,205 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: black;
-  background-color: #fefefe;
+  margin: 0;
+  font-family: Poppins, sans-serif;
 }
 
-h1,
-h2 {
-  text-align: center;
-  margin: 0.5rem;
-}
-
-#options-form {
+.nav {
+  background-color: #111;
   display: flex;
+  justify-content: flex-start;
 }
 
-#options-form fieldset {
+.light-mode .nav {
+  background-color: hsl(200, 100%, 20%);
+}
+
+.title {
+  color: #fefefe;
+  padding: 0.5em 1em;
+  margin: 0;
+  border: none;
+}
+
+.animation-area {
   flex-grow: 1;
-  border-radius: 0.5rem;
-  border: 1px solid gray;
-  text-align: center;
-  display: grid;
-  justify-content: center;
-  justify-items: flex-start;
-  grid-template-columns: auto auto;
-  gap: 0.25rem;
 }
 
-#options-form fieldset > * {
-  cursor: pointer;
+@keyframes color-rotate {
+  from {
+    background-color: hsl(0, 100%, 50%);
+  }
+
+  25% {
+    background-color: hsl(60, 100%, 50%);
+  }
+
+  50% {
+    background-color: hsl(120, 100%, 50%);
+  }
+
+  75% {
+    background-color: hsl(180, 100%, 50%);
+  }
+
+  to {
+    background-color: hsl(240, 100%, 50%);
+  }
 }
 
 .dark-mode {
-  color: fefefe;
-  background-color: black;
+  color: #fefefe;
+  background-color: #222;
 }
 
-#color-grid {
+.light-mode {
+  color: hsl(200, 100%, 20%);
+  background-color: #fefefe;
+}
+
+.game-container {
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: 4fr 1fr;
+  height: 100%;
+}
+
+.options-menu,
+.game-display {
+  padding-top: 5em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dark-mode .options-menu {
+  background-color: #333;
+}
+
+.light-mode .options-menu {
+  background-color: hsl(200, 100%, 97%);
+}
+
+.options-set {
+  flex-grow: 1;
+  border: 1px solid #fefefe;
+  border-radius: 0.5rem;
+  text-align: center;
+  display: flex;
   justify-content: center;
-  max-width: 16 rem;
-  margin: auto;
+  justify-items: flex-start;
+  margin-bottom: 2em;
+}
+
+.light-mode .options-set {
+  border-color: hsl(200, 100%, 20%);
+}
+
+.options-set * {
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+.options-set input {
+  opacity: 0;
+}
+
+.options-set input + label {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 10000px;
+}
+
+.options-set input + label:hover {
+  animation: emphasis 100ms linear forwards;
+}
+
+@keyframes emphasis {
+  to {
+    scale: 1.1;
+  }
+}
+
+.dark-mode .options-set input:checked + label {
+  background-color: #555;
+}
+
+.light-mode .options-set input:checked + label {
+  background-color: hsl(200, 100%, 20%);
+  color: white;
+}
+
+.color-grid {
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+  justify-content: center;
   padding: 0.5rem;
-  grid-template-columns: repeat(auto-fit, 5rem);
+  grid-template-columns: repeat(3, 5rem);
   grid-auto-rows: 5rem;
 }
 
-#color-grid > * {
+.btn-color {
+  cursor: pointer;
   border-radius: 0.5rem;
-  border: 1px solid gray;
+  border: none;
   padding: 0;
   margin: 0;
 }
 
-.color-button {
+.btn-color:hover {
+  animation: emphasis 100ms linear forwards;
+}
+
+@keyframes popup {
+  from {
+    scale: 0;
+  }
+
+  50% {
+    scale: 1.2;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+.result {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.btn-next-color {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: #555;
+  color: #fefefe;
+  padding: 0.5em 1em;
+  border: none;
+  outline: none;
+  border-radius: 10000px;
   cursor: pointer;
 }
 
-.events-disabled {
-  pointer-events: none;
+.btn-next-color:hover {
+  animation: emphasis 100ms linear forwards;
+}
+
+.light-mode .btn-next-color {
+  background-color: hsl(200, 100%, 20%);
 }
 
 .wrong {
-  opacity: 0.3 !important;
-}
-
-#result-section {
-  text-align: center;
-  font-size: 1.5rem;
+  opacity: 0.2;
 }
 
 .hide {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
