@@ -18,6 +18,8 @@ const difficultyOptions = document.getElementById("difficulty-options")
 const medium = document.getElementById("medium")
 const hard = document.getElementById("hard")
 const displayOptions = document.getElementById("display-options")
+const light = document.getElementById("light")
+const dark = document.getElementById("dark")
 const colorString = document.getElementById("color-string")
 const colorGrid = document.getElementById("color-grid")
 const colorButtonTemplate = document.getElementById("color-button-template")
@@ -35,15 +37,30 @@ difficultyOptions.addEventListener("click", e => {
 
 displayOptions.addEventListener("click", e => {
   if (e.target.value === "dark") {
-    body.classList.add("dark-mode")
-    body.classList.remove("light-mode")
+    setDarkMode(true)
   } else if (e.target.value === "light") {
-    body.classList.remove("dark-mode")
-    body.classList.add("light-mode")
+    setDarkMode(false)
   }
 })
 
+function setDarkMode(setToDark = true) {
+  if (setToDark) {
+    light.checked = false
+    dark.checked = true
+    sessionStorage.setItem("colorGameDarkMode", "true")
+    body.setAttribute("data-theme", "dark")
+  } else {
+    dark.checked = false
+    light.checked = true
+    sessionStorage.setItem("colorGameDarkMode", "false")
+    body.setAttribute("data-theme", "light")
+  }
+}
+
 function start() {
+  sessionStorage.getItem("colorGameDarkMode") === "true"
+    ? setDarkMode(true)
+    : setDarkMode(false)
   colorGrid.innerHTML = ""
   resultSection.classList.add("hide")
   let colors = generateRandomColors(6)
