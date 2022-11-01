@@ -3,7 +3,12 @@ import convert from "color-convert"
 const NUM_POSSIBLE_HEX_VALUES = 16777216
 
 export function compareColors(color1, color2) {
-  return toHex(color1) === toHex(color2)
+  /*
+  Because of what appears to be an error in the
+  color-convert library converting HSL to hex,
+  I am using HSL for comparing the colors
+  */
+  return toHSL(color1) === toHSL(color2)
 }
 
 export function chooseColor(colors) {
