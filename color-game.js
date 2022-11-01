@@ -102,7 +102,7 @@ function RGBToHex(color) {
 }
 
 function HSLToRGB(color) {
-  const hslArray = color.substr(4).split(")")[0].split(", ")
+  const hslArray = color.replaceAll("%", "").substr(4).split(")")[0].split(", ")
   const result = convert.hsl.rgb(hslArray)
   return `rgb(${result[0]}, ${result[1]}, ${result[2]})`
 }
@@ -110,16 +110,16 @@ function HSLToRGB(color) {
 function RGBtoHSL(color) {
   const rgbArray = color.substr(4).split(")")[0].split(", ")
   const result = convert.rgb.hsl(rgbArray)
-  return `hsl(${result[0]}, ${result[1]}, ${result[2]})`
+  return `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`
 }
 
 function hexToHSL(color) {
   const result = convert.hex.hsl(color.slice(1))
-  return `hsl(${result[0]}, ${result[1]}, ${result[2]})`
+  return `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`
 }
 
 function HSLToHex(color) {
-  const hslArray = color.substr(4).split(")")[0].split(", ")
+  const hslArray = color.replaceAll("%", "").substr(4).split(")")[0].split(", ")
   const result = convert.hsl.hex(hslArray)
   return `#${result}`.toUpperCase()
 }
